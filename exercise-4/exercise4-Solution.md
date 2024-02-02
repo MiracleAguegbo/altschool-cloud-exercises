@@ -17,8 +17,8 @@ I installed php7.4 using the following commands:
 
 5. `php7 -v` Checks and displays the installed PHP version to confirm that PHP 7.4 is now the active version on the system. See the output below
 
-![php -v]()
+![php -v](https://raw.githubusercontent.com/MiracleAguegbo/altschool-cloud-exercises/main/exercise-4/images/Screenshot%20(5).png)
 
 6. The `/etc/apt/sources.list` file is a configuration file for Linux's Advanced Package Tool (APT). It contains URLs and other details about remote repositories, serving as a reference for installing software packages and applications on the system.
 
-![cat /etc/sources.list]()
+![cat /etc/sources.list](https://raw.githubusercontent.com/MiracleAguegbo/altschool-cloud-exercises/main/exercise-4/images/Screenshot%20(6).png)
