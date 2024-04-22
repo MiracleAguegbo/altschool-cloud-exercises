@@ -9,3 +9,7 @@ Requirements
 Submit the bash script and Ansible playbook to (publicly accessible) GitHub repository. Document the steps with screenshots in md files, including proof of the application’s accessibility (screenshots taken where necessary) Use either the VM’s IP address or a domain name as the URL.
 
 ## solution
+
+I started by automating the provisioning of two Ubuntu-based servers, named “Master” and “Slave”, using Vagrant, which involved configuring my Vagrantfile.
+
+![vagrantfile](https://raw.githubusercontent.com/MiracleAguegbo/altschool-cloud-exercises/main/second-semester-project/images/vagrantfile.png)
