@@ -8,7 +8,7 @@ Requirements
 
 Submit the bash script and Ansible playbook to (publicly accessible) GitHub repository. Document the steps with screenshots in md files, including proof of the application’s accessibility (screenshots taken where necessary) Use either the VM’s IP address or a domain name as the URL.
 
-## solution
+## Solution
 
 I started by automating the provisioning of two Ubuntu-based servers, named “Master” and “Slave”, using Vagrant, which involved configuring my Vagrantfile.
 
@@ -144,3 +144,41 @@ echo "LAMP stack deployment completed successfully."
 
 deploy_function
 ```
+
+### Ansible
+
+I set up Ansible to transfer my bash script from the master to the slave, execute it there, and remove it afterward. Additionally, I configured Ansible to add a cronjob for checking server uptime daily at midnight. My Ansible directory includes files like 'host_inventory', 'deploy_lamp_app_and_cron_job.yml', and a 'roles' directory. To ensure the slave was functioning properly, I used the 'ping' module in Ansible, receiving a 'pong' response, indicating its reachability and responsiveness.
+
+![vagrantfile](images/ansible-check.png)
+
+This is the structure of my Ansible
+
+```
+ansible/
+├── host_inventory
+├── deploy_lamp_app_and_cron_job.yml
+└── roles/
+    └── lamp_deployment/
+        └── tasks/
+            └── main.yml
+```
+
+*The following images shows the content in each of them.*
+
+1. **ansible/host-inventory**
+
+![vagrantfile](images/ansiblehost_inventory.png)
+
+2. **ansible/deploy_lamp_app_and_cron_job.yml**
+
+![vagrantfile](images/deploy_lamp_app_and_cron_job.png)
+
+3. **ansible/roles/lamp_deployment/tasks/main.yml**
+
+![vagrantfile](images/main-yml.png)
+
+### Running My Ansible Playbook
+
+![](images/ansible-playbook1.png)
+
+![](images/ansible-playbook2.png)
