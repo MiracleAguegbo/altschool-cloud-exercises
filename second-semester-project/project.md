@@ -149,7 +149,7 @@ deploy_function
 
 I set up Ansible to transfer my bash script from the master to the slave, execute it there, and remove it afterward. Additionally, I configured Ansible to add a cronjob for checking server uptime daily at midnight. My Ansible directory includes files like 'host_inventory', 'deploy_lamp_app_and_cron_job.yml', and a 'roles' directory. To ensure the slave was functioning properly, I used the 'ping' module in Ansible, receiving a 'pong' response, indicating its reachability and responsiveness.
 
-![vagrantfile](images/ansible-check.png)
+![vagrantfile](images/aansible-check.png)
 
 This is the structure of my Ansible
 
@@ -179,6 +179,6 @@ ansible/
 
 ### Running My Ansible Playbook
 
-![](images/ansible-playbook1.png)
+![](images/aansible-playbook1.png)
 
-![](images/ansible-playbook2.png)
+![](images/aansible-playbook2.png)
