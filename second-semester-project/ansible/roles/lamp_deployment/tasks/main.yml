@@ -1,0 +1,26 @@
+---
+- name: Copy script from master to slave
+  copy:
+    src: /home/vagrant/semester2_project.sh
+    dest: /home/vagrant/semester2_project.sh
+    mode: 0755
+
+- name: Execute script on slave
+  shell: /home/vagrant/semester2_project.sh
+
+- name: Delete script after execution
+  file:
+    path: /home/vagrant/semester2_project.sh
+    state: absent
+
+- name: Add cron job to log server uptime at 12am
+  cron:
+    name: "Check server uptime"
+    minute: "0"
+    hour: "0"
+    job: "uptime >> /home/vagrant/user_uptime2.log"
+
+- name: Add cron job to check server's uptime 
+  lineinfile:
+    path: /etc/crontab
+    line: "0 0 * * * root uptime >> /var/log/uptime.log"
