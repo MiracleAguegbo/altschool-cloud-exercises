@@ -53,7 +53,7 @@ iii. Once you've selected the folders and files from your local file storage, cl
 
 iv. Allow some time for the files to upload succesfully. Eventually, you'll see a small green bar indicating a successful upload. The click "close".
 
-![](images/6uploadsuc2.png)
+![](images/6uploadsuc22.png)
 
 ## Step 3:Enable Static Website Hosting on S3 Bucket Created
 
@@ -95,22 +95,10 @@ v. For Web Application Firewall (WAF), select the radio button for "Do not enabl
 
 after the above step, leave everything as default and click "Create distribution".
 
-vi. 
+vi. After the distribution has been created successfully, click on  "copy policy".
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+![](images/10cloudfront7.png)
 
 
 
@@ -120,3 +108,46 @@ i. Navigate to the Permissions tab and scroll down to find the "Bucket policy", 
 
 ![](images/9bucketpol1.png)
 
+ii. Paste the copied policy in the box and click on save changes.
+
+![](images/9bucketpol2.png)
+
+```
+
+{
+        "Version": "2008-10-17",
+        "Id": "PolicyForCloudFrontPrivateContent",
+        "Statement": [
+            {
+                "Sid": "AllowCloudFrontServicePrincipal",
+                "Effect": "Allow",
+                "Principal": {
+                    "Service": "cloudfront.amazonaws.com"
+                },
+                "Action": "s3:GetObject",
+                "Resource": "arn:aws:s3:::kool-form-pack/*",
+                "Condition": {
+                    "StringEquals": {
+                      "AWS:SourceArn": "arn:aws:cloudfront::533267206451:distribution/E2I5NJS4WGI9FU"
+                    }
+                }
+            }
+        ]
+      }
+
+```
+iii. Return to your CloudFront tab and copy the Distribution domain name. Paste it into your browser's address bar and add "/index.html" to the end. i.e https://d3j2nfd0i0023y.cloudfront.net/index.html.
+
+![](images/10cloudfront7.png)
+
+vi. The link will display your website just like mine below.
+
+![](images/websit.png)
+
+## Conclusion
+
+The outlined process illustrates how to establish a private static website utilizing Amazon S3 and CloudFront. This involves enabling static website hosting with a public read policy on S3, configuring an S3 bucket to store website files, and setting up a CloudFront distribution to ensure global access with optimized transfer rates and minimal latency.
+
+To manage access to the S3 bucket, creating Origin Access Control (OAC) becomes pivotal. Furthermore, the procedure entails making the S3 bucket private by removing any existing public read policies and restricting access solely to the CloudFront service through bucket policy adjustments.
+
+In summary, the documentation demonstrates leveraging CloudFront to strengthen the security and performance of the static website hosted on S3, maintaining privacy and access control solely through the CloudFront distribution.
